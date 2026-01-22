@@ -21,16 +21,17 @@ Open `index.html` in a browser, or view it live at:
 - Git & GitHub
 
 ## Projct structure
-Comportfolio/
-├── assets/
-│ ├── _toggle/
-│ ├── images/
-│ └── fonts/
-├── css/
-├── scss/
-├── js/
-├── python/
-└── index.html
+```Comportfolio/
+        ├── assets/
+        │ ├── _toggle/
+        │ ├── images/
+        │ └── fonts/
+        ├── css/
+        ├── scss/
+        ├── js/
+        ├── python/
+        └── index.html
+```
 
 ## Features
 - Responsive web design
@@ -46,7 +47,7 @@ Comportfolio/
 2. Open index.html in a browser
 
 3. SCSS files can be compiled to CSS using Sass:
-sass --watch scss/main.scss:css/main.css
+```sass --watch scss/main.scss:css/main.css```
 
 ## Future Improvements
 - Add more projects and demos
