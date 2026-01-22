@@ -1,0 +1,61 @@
+.site-header {
+    display: grid;
+    grid-template-columns: 150px 1fr; // picture = 150px, rest = flexible
+    align-items: center;             // vertically center
+    gap: 20px;                       // space between image and text
+    padding: 20px;
+    background-color: #f8f8f8;
+  
+    .header-picture {
+      img.profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #333;
+      }
+    }
+  
+    .header-text {
+      h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+  
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+        display: flex;
+        gap: 15px;
+  
+        li a {
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+  
+          &:hover {
+            color: #0077cc;
+          }
+        }
+      }
+    }
+  }
+  
+  // Responsive layout for mobile
+  @media (max-width: 768px) {
+    .site-header {
+      grid-template-columns: 1fr; // stack image and text vertically
+      text-align: center;
+  
+      .header-picture {
+        margin: 0 auto 15px auto;
+      }
+  
+      .header-text nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  
