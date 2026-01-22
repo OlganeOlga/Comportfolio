@@ -11,7 +11,7 @@ A personal portfolio website showcasing web development projects using HTML, SCS
 
 ## Viewing the Portfolio
 Open `index.html` in a browser, or view it live at:
-[https://yourusername.github.io/Comportfolio/](https://olganeolga.github.io/Comportfolio/)
+[https://OlganeOlga.github.io/Comportfolio/](https://olganeolga.github.io/Comportfolio/)
 
 ## Technologies Used
 - HTML5
