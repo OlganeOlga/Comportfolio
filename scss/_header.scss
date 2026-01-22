@@ -4,7 +4,8 @@
     align-items: center;             // vertically center
     gap: 20px;                       // space between image and text
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color:  #111;
+    color:  white;
   
     .header-picture {
       img.profile-photo {
@@ -17,9 +18,16 @@
     }
   
     .header-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
       h1 {
         margin: 0;
         font-size: 2rem;
+        align-items: center;
       }
   
       nav ul {

@@ -12,7 +12,8 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #111;
+  color: white;
 }
 .site-header .header-picture img.profile-photo {
   width: 150px;
@@ -21,9 +22,18 @@
   object-fit: cover;
   border: 3px solid #333;
 }
+.site-header .header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
 .site-header .header-text h1 {
   margin: 0;
   font-size: 2rem;
+  align-items: center;
 }
 .site-header .header-text nav ul {
   list-style: none;
