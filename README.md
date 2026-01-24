@@ -1,6 +1,6 @@
 # Comportfolio
 
-A personal portfolio website showcasing web development projects using HTML, SCSS, JavaScript, and Python.
+A personal portfolio website showcasing web development projects using HTML, SCSS, JavaScript, and Python, databases, and cloud technologies.
 
 ## Technologies Used
 - HTML5
