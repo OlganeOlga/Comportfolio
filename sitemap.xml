@@ -8,4 +8,20 @@
       <loc>https://OlgaNeOlga.github.io/Comportfolio/#about</loc>
       <priority>0.8</priority>
    </url>
+   <url>
+      <loc>https://OlgaNeOlga.github.io/Comportfolio/#skills</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://OlgaNeOlga.github.io/Comportfolio/#work</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://OlgaNeOlga.github.io/Comportfolio/#contact</loc>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://OlgaNeOlga.github.io/Comportfolio/#personal</loc>
+      <priority>0.8</priority>
+   </url>
 </urlset>
