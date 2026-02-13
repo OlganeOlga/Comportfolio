@@ -8,7 +8,7 @@ export async function loadBlogPosts() {
   const personal = document.getElementById('personal');
   if (!personal) return;
 
-  const personalSection = personal.querySelector('.accordion-content');
+  const personalSection = personal.querySelector('#personal .accordion-content .blog-posts');
   if (!personalSection) return;
 
   try {
@@ -19,10 +19,7 @@ export async function loadBlogPosts() {
     posts.forEach((content, index) => {
       const postDiv = document.createElement('div');
       postDiv.className = 'blog-post';
-      postDiv.innerHTML = `
-        <h3>${blogPosts[index].title}</h3>
-        ${content}
-      `;
+      postDiv.innerHTML = html; // html converted from Markdown via marked.js
       personalSection.appendChild(postDiv);
     });
 
