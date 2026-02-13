@@ -47,7 +47,7 @@ async function initPortfolio() {
     if (s.id === 'blog') {
       await loadBlogPosts();
     
-      if (window.location.hash === `#personal`) {
+      if (window.location.hash === `#blog`) {
         container.scrollIntoView({ behavior: 'smooth' });
         container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
       }
