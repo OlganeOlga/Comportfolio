@@ -19,7 +19,11 @@ export async function loadBlogPosts() {
     posts.forEach((content, index) => {
       const postDiv = document.createElement('div');
       postDiv.className = 'blog-post';
-      postDiv.innerHTML = html; // html converted from Markdown via marked.js
+
+      // ✅ Convert Markdown to HTML using marked
+      const html = marked.parse(content);
+
+      postDiv.innerHTML = html;
       personalSection.appendChild(postDiv);
     });
 
