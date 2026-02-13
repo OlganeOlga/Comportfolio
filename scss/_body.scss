@@ -22,6 +22,12 @@
       p {
         margin: 10px 0;
       }
+      p.hobbies{
+          padding: 2em;
+          font-style: italic;
+          font-size: 1.2em;
+          background: #d1ecc6;
+      }
     }
   
     &.active .accordion-content {

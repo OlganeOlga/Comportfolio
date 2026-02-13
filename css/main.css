@@ -78,6 +78,7 @@
   background-color: #e0e0e0;
 }
 .accordion .accordion-content {
+  display: none;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
@@ -86,7 +87,14 @@
 .accordion .accordion-content p {
   margin: 10px 0;
 }
+.accordion .accordion-content p.hobbies {
+  padding: 2em;
+  font-style: italic;
+  font-size: 1.2em;
+  background: #d1ecc6;
+}
 .accordion.active .accordion-content {
+  display: block;
   max-height: 500px;
   padding: 15px;
 }
@@ -97,6 +105,17 @@
     padding: 10px;
   }
 }
+.blog-post {
+  margin-bottom: 2em;
+  padding: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+.blog-post h3 {
+  margin-top: 0;
+  color: #333;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
