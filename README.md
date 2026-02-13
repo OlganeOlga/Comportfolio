@@ -14,7 +14,7 @@ Open `index.html` in a browser, or view it live at:
 [OlganeOlga/Portfolio](https://olganeolga.github.io/Comportfolio/)
 
 
-<a href="https://example.com" target="_blank" rel="noopener noreferrer">
+<a href="https://olganeolga.github.io/Comportfolio/" target="_blank" rel="noopener noreferrer">
   Open in a new page
 </a>
 
