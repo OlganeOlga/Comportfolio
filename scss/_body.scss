@@ -13,6 +13,7 @@
     }
   
     .accordion-content {
+      display: none;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease, padding 0.3s ease;
@@ -24,6 +25,7 @@
     }
   
     &.active .accordion-content {
+      display: block;
       max-height: 500px;
       padding: 15px;
     }

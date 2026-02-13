@@ -1,52 +1,62 @@
-// Load header
-fetch('sections/header.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-  })
-  .catch(err => console.error('Header load failed:', err));
+import { loadBlogPosts } from './blog.js';
 
-// Load main HTML sections dynamically
-const sections = [
-  { id: 'about', file: 'sections/about.html' },
-  { id: 'work', file: 'sections/work.html' },
-  { id: 'skills', file: 'sections/skills.html' },
-  { id: 'contacts', file: 'sections/contacts.html' },
-  { id: 'personal', file: 'sections/personal.html' }
-];
+async function loadHTML(id, file) {
+  try {
+    const res = await fetch(file);
+    const data = await res.text();
+    const container = document.getElementById(id);
+    container.innerHTML = data;
+    return container;
+  } catch (err) {
+    console.error(`Failed to load ${file}:`, err);
+  }
+}
 
-sections.forEach(s => {
-  fetch(s.file)
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById(s.id).innerHTML = data;
+function initAccordions(container) {
+  const accordions = container.querySelectorAll('.accordion');
 
-      // Initialize accordion for this section
-      const accordions = document.getElementById(s.id).querySelectorAll('.accordion');
-      accordions.forEach(accordion => {
-        const title = accordion.querySelector('.accordion-title');
-        const content = accordion.querySelector('.accordion-content');
-        content.style.display = 'none'; // hide by default
-        title.addEventListener('click', () => {
-          const isOpen = content.style.display === 'block';
-          content.style.display = isOpen ? 'none' : 'block';
-          accordion.classList.toggle('active', !isOpen);
-        });
-      });
+  accordions.forEach(accordion => {
+    const title = accordion.querySelector('.accordion-title');
+    const content = accordion.querySelector('.accordion-content');
 
-      // If page opened with hash to this section, open it
-      const hash = window.location.hash;
-      if (hash === `#${s.id}`) {
-        accordions.forEach(accordion => {
-          const content = accordion.querySelector('.accordion-content');
-          content.style.display = 'block';
-          accordion.classList.add('active');
-        });
-        document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
+    title.addEventListener('click', () => {
+      accordion.classList.toggle('active');
+    });
+  });
+}
+
+async function initPortfolio() {
+  // Load header
+  await loadHTML('header', 'sections/header.html');
+
+  const sections = [
+    { id: 'about', file: 'sections/about.html' },
+    { id: 'work', file: 'sections/work.html' },
+    { id: 'skills', file: 'sections/skills.html' },
+    { id: 'contacts', file: 'sections/contacts.html' },
+    { id: 'personal', file: 'sections/personal.html' }
+  ];
+
+  for (const s of sections) {
+    const container = await loadHTML(s.id, s.file);
+    if (!container) continue;
+
+    initAccordions(container);
+
+    if (s.id === 'personal') {
+      await loadBlogPosts();
+    
+      if (window.location.hash === `#personal`) {
+        container.scrollIntoView({ behavior: 'smooth' });
+        container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
       }
-    })
-    .catch(err => console.error(`Failed to load section ${s.id}:`, err));
-});
+    } else if (window.location.hash === `#${s.id}`) {
+      container.scrollIntoView({ behavior: 'smooth' });
+      container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
+    }
+  }
+  
+  console.log("Portfolio loaded");
+}
 
-// Optional: log when portfolio fully loaded
-console.log("Portfolio loaded");
+initPortfolio();
