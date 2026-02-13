@@ -34,7 +34,7 @@ async function initPortfolio() {
     { id: 'work', file: 'sections/work.html' },
     { id: 'skills', file: 'sections/skills.html' },
     { id: 'contacts', file: 'sections/contacts.html' },
-    { id: 'personal', file: 'sections/personal.html' }
+    { id: 'personal', file: 'sections/personal.html' },
     { id: 'blog', file: 'sections/blog.html' }
   ];
 
