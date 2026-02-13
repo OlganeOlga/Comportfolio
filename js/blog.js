@@ -1,30 +1,33 @@
 export async function loadBlogPosts() {
   const blogPosts = [
     { title: "My First Post", file: "blog/post1.md", date: "2026-02-13", tags: ["webdev", "personal"] },
-    // { title: "Learning Web Development", file: "blog/post2.md" },
-    // { title: "My Projects Journey", file: "blog/post3.md" }
+    // Add more posts here
   ];
 
-  const personal = document.getElementById('personal');
-  if (!personal) return;
+  // Select the blog section
+  const blogSection = document.getElementById('blog');
+  if (!blogSection) return;
 
-  const personalSection = personal.querySelector('#personal .accordion-content .blog-posts');
-  if (!personalSection) return;
+  // Select the container inside the accordion content
+  const blogContainer = blogSection.querySelector('.accordion-content .blog-posts');
+  if (!blogContainer) return;
 
   try {
+    // Fetch all Markdown posts
     const posts = await Promise.all(
       blogPosts.map(post => fetch(post.file).then(res => res.text()))
     );
 
+    // Loop over posts and append
     posts.forEach((content, index) => {
       const postDiv = document.createElement('div');
       postDiv.className = 'blog-post';
 
-      // ✅ Convert Markdown to HTML using marked
+      // Convert Markdown to HTML using marked.js
       const html = marked.parse(content);
 
       postDiv.innerHTML = html;
-      personalSection.appendChild(postDiv);
+      blogContainer.appendChild(postDiv);
     });
 
   } catch (err) {
@@ -32,6 +35,5 @@ export async function loadBlogPosts() {
   }
 }
 
+// Only call this when the DOM is ready
 document.addEventListener('DOMContentLoaded', loadBlogPosts);
-
-  

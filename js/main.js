@@ -35,6 +35,7 @@ async function initPortfolio() {
     { id: 'skills', file: 'sections/skills.html' },
     { id: 'contacts', file: 'sections/contacts.html' },
     { id: 'personal', file: 'sections/personal.html' }
+    { id: 'blog', file: 'sections/blog.html' }
   ];
 
   for (const s of sections) {
@@ -43,7 +44,7 @@ async function initPortfolio() {
 
     initAccordions(container);
 
-    if (s.id === 'personal') {
+    if (s.id === 'blog') {
       await loadBlogPosts();
     
       if (window.location.hash === `#personal`) {
