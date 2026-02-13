@@ -1,8 +1,8 @@
 export async function loadBlogPosts() {
   const blogPosts = [
     { title: "My First Post", file: "blog/post1.md", date: "2026-02-13", tags: ["webdev", "personal"] },
-    { title: "Learning Web Development", file: "blog/post2.md" },
-    { title: "My Projects Journey", file: "blog/post3.md" }
+    // { title: "Learning Web Development", file: "blog/post2.md" },
+    // { title: "My Projects Journey", file: "blog/post3.md" }
   ];
 
   const personal = document.getElementById('personal');
