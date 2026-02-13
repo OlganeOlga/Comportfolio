@@ -5,17 +5,6 @@
 
 Welcome to my very first blog post! In this post, I want to share my steps in building my open portfolio.
 
-## Getting Started
-
-I have started learning web development for same times ago and made some programs, but did not used it for my promotion. Now I will do it serious.
-
-At thiw first step i focuse on:
-
-- HTML for structuring content
-- CSS for styling and layout
-- JavaScript for interactivity
-
-## Perpose of the Portfolio
 # My Personal Portfolio
 
 I created this personal portfolio to showcase my skills and projects.
