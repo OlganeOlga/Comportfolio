@@ -8,7 +8,7 @@ export async function loadBlogPosts() {
   const personal = document.getElementById('personal');
   if (!personal) return;
 
-  const personalSection = personal.querySelector('#personal .accordion-content .blog-posts');
+  const personalSection = personal.querySelector('#personal .accordion .blog-posts');
   if (!personalSection) return;
 
   try {
