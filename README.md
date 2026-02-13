@@ -13,10 +13,7 @@ A personal portfolio website showcasing web development projects using HTML, SCS
 Open `index.html` in a browser, or view it live at:
 [OlganeOlga/Portfolio](https://olganeolga.github.io/Comportfolio/)
 
-
-<a href="https://olganeolga.github.io/Comportfolio/" target="_blank" rel="noopener noreferrer">
-  Open in a new page
-</a>
+[Open in a new page]("https://olganeolga.github.io/Comportfolio/"){:target="_blank" }
 
 
 ## Technologies Used
