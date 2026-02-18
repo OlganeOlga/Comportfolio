@@ -1,6 +1,7 @@
 export async function loadBlogPosts() {
   const blogPosts = [
     { title: "My First Post", file: "blog/post1.md", date: "2026-02-13", tags: ["webdev", "personal"] },
+    { title: "Nice day", file: "blog/post2.md", date: "2026-02-18", tags: ["day off", "personal"] },
     // Add more posts here
   ];
 
