@@ -23,15 +23,20 @@ Open `index.html` in a browser, or view it live at:
 
 ## Projct structure
 ```Comportfolio/
-        ├── assets/
-        │ ├── _toggle/
-        │ ├── images/
-        │ └── fonts/
-        ├── css/
-        ├── scss/
-        ├── js/
-        ├── python/
-        └── index.html
+                ├───.gitignor
+                ├───assets
+                │   ├───fonts
+                │   ├───images
+                │   └───_toggle
+                ├───backend
+                │   └───templates
+                ├───blog
+                ├───css
+                ├───js
+                ├───python
+                ├───scss
+                └───sections
+                └── index.html
 ```
 
 ## Features
