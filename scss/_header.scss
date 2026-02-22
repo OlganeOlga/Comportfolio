@@ -56,7 +56,7 @@
       .header-menu {
         nav.nav-menu{
           display: grid;
-          grid-template-columns: auto;
+          grid-template-columns: auto1fr 1fr 1fr 1fr 1fr 1fr;
           gap: 20px;
           margin: 0;
           padding: 0;

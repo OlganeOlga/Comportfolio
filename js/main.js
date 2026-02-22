@@ -20,8 +20,32 @@ function initAccordions(container) {
     const content = accordion.querySelector('.accordion-content');
 
     title.addEventListener('click', () => {
+       // Close all other accordions in this container
+       accordions.forEach(a => {
+        if (a !== accordion) a.classList.remove('active');
+      });
+       // Toggle this accordion
       accordion.classList.toggle('active');
     });
+  });
+}
+
+function closeAllSectionsExcept(exceptId) {
+  const sections = document.querySelectorAll('section'); // assuming each section has <section id="...">
+  sections.forEach(s => {
+    if (s.id !== exceptId && s.id !== 'header') {
+      s.querySelectorAll('.accordion').forEach(a => a.classList.remove('active'));
+    }
+  });
+}
+
+function scrollToSectionUnderHeader(section) {
+  const header = document.getElementById('header');
+  const headerHeight = header.offsetHeight;
+  const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({
+    top: sectionTop - headerHeight, // scroll just below header
+    behavior: 'smooth'
   });
 }
 
@@ -44,16 +68,21 @@ async function initPortfolio() {
 
     initAccordions(container);
 
+    // Check if this section is the hash target
+    if (window.location.hash === `#${s.id}`) {
+      // Close all other sections
+      closeAllSectionsExcept(s.id);
+
+      // Open all accordions in this section
+      container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
+
+      // Scroll under header
+      scrollToSectionUnderHeader(container);
+    }
+
+    // Special case for blog to load posts
     if (s.id === 'blog') {
       await loadBlogPosts();
-    
-      if (window.location.hash === `#blog`) {
-        container.scrollIntoView({ behavior: 'smooth' });
-        container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
-      }
-    } else if (window.location.hash === `#${s.id}`) {
-      container.scrollIntoView({ behavior: 'smooth' });
-      container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
     }
   }
   
