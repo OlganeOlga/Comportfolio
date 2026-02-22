@@ -8,7 +8,7 @@
 
 .site-header {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 150px 1fr auto;
   align-items: center;
   gap: 20px;
   padding: 20px;
@@ -50,6 +50,36 @@
 .site-header .header-text nav ul li a:hover {
   color: #0077cc;
 }
+.site-header .header-menu nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.site-header .header-menu nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.site-header .header-menu nav ul li a:hover {
+  color: #0077cc;
+}
+.site-header .header-menu nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #0077cc;
+  transition: width 0.3s ease;
+}
+.site-header .header-menu nav ul li a:hover::after {
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .site-header {
@@ -62,6 +92,14 @@
   .site-header .header-text nav ul {
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .site-header .header-menu {
+    margin-top: 15px;
+  }
+  .site-header .header-menu nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 }
 .accordion {
