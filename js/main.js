@@ -1,4 +1,12 @@
 import { loadBlogPosts } from './blog.js';
+let lastScrollPosition = 0;
+
+function clearHashOnReload() {
+  if (window.location.hash) {
+    // Remove hash without reloading the page
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+}
 
 async function loadHTML(id, file) {
   try {
@@ -17,20 +25,53 @@ function initAccordions(container) {
 
   accordions.forEach(accordion => {
     const title = accordion.querySelector('.accordion-title');
-    const content = accordion.querySelector('.accordion-content');
 
     title.addEventListener('click', () => {
-       // Close all other accordions in this container
-       accordions.forEach(a => {
+      // Toggle this accordion
+      accordion.classList.toggle('active');
+      const isActive = accordion.classList.contains('active');
+
+      // Close all other active accordions
+      document.querySelectorAll('.accordion').forEach(a => {
         if (a !== accordion) a.classList.remove('active');
       });
-       // Toggle this accordion
-      accordion.classList.toggle('active');
+
+      if (window.location.hash === `#${container.id}`) {
+        // Hash is already set → remove it
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } else {
+        // Hash not set → set it
+        history.replaceState(null, '', `#${container.id}`);
+        //scrolle under fixed header
+        scrollToSectionUnderHeader(container)
+      }
+        
+      if (isActive) {
+        // Section was open → now closing
+        // Remove hash
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+    
+        // Scroll back to previous position
+        window.scrollTo({ top: lastScrollPosition, behavior: 'smooth' });
+      } else {
+        // Currently closed → now opening
+        //
+        // Section was closed → now opening
+        // Save current scroll position
+        lastScrollPosition = window.scroll;
+    
+        // Add hash
+        history.replaceState(null, '', `#${container.id}`);
+    
+        // Scroll under fixed header
+        scrollToSectionUnderHeader(container);
+      }
+     
     });
   });
 }
 
-function closeAllSectionsExcept(exceptId) {
+function closeAllSectionsExcept(exceptId = 0) {
   const sections = document.querySelectorAll('section'); // assuming each section has <section id="...">
   sections.forEach(s => {
     if (s.id !== exceptId && s.id !== 'header') {
@@ -49,11 +90,9 @@ function scrollToSectionUnderHeader(section) {
   });
 }
 
-async function initPortfolio() {
-  // Load header
-  await loadHTML('header', 'sections/header.html');
-
-  const sections = [
+// ← This was missing! Adds it back:
+async function loadAllSections() {
+  const sectionList = [
     { id: 'about', file: 'sections/about.html' },
     { id: 'work', file: 'sections/work.html' },
     { id: 'skills', file: 'sections/skills.html' },
@@ -62,31 +101,51 @@ async function initPortfolio() {
     { id: 'blog', file: 'sections/blog.html' }
   ];
 
-  for (const s of sections) {
+  const loadedContainers = {};
+
+  for (const s of sectionList) {
     const container = await loadHTML(s.id, s.file);
     if (!container) continue;
 
     initAccordions(container);
 
-    // Check if this section is the hash target
-    if (window.location.hash === `#${s.id}`) {
-      // Close all other sections
-      closeAllSectionsExcept(s.id);
+    if (s.id === 'blog') await loadBlogPosts();
 
-      // Open all accordions in this section
-      container.querySelectorAll('.accordion').forEach(a => a.classList.add('active'));
-
-      // Scroll under header
-      scrollToSectionUnderHeader(container);
-    }
-
-    // Special case for blog to load posts
-    if (s.id === 'blog') {
-      await loadBlogPosts();
-    }
+    loadedContainers[s.id] = container;
   }
-  
+
+  return loadedContainers;
+}
+
+function activateSection(container) {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  // closeAllSectionsExcept(container.id);
+  closeAllSectionsExcept();
+  //container.querySelectorAll('.accordion').forEach(a => a.classList.remove('active'));
+  scrollToSectionUnderHeader(container);
+}
+
+async function initPortfolio() {
+  clearHashOnReload()
+  // Load header
+  await loadHTML('header', 'sections/header.html');
+
+  // Load all sections
+  const sections = await loadAllSections();
+
+  // Activate section on page load if hash exists
+  if (window.location.hash) {
+    const targetId = window.location.hash.replace('#', '');
+    if (sections[targetId]) activateSection(sections[targetId]);
+  }
+
+  // Listen for menu clicks / hash changes
+  window.addEventListener('hashchange', () => {
+    const targetId = window.location.hash.replace('#', '');
+    if (sections[targetId]) activateSection(sections[targetId]);
+  });
+
   console.log("Portfolio loaded");
 }
 
-initPortfolio();
+await initPortfolio();
