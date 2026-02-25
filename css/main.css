@@ -6,21 +6,20 @@
   border: 3px solid #333;
 }
 
+.blog-post p img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
 .site-header {
   display: grid;
   grid-template-columns: 150px 1fr;
   align-items: center;
   gap: 20px;
   padding: 20px;
-  background-color: #111;
+  background-color: #d38e8e;
   color: white;
-}
-.site-header .header-picture img.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #333;
 }
 .site-header .header-content {
   display: grid;
@@ -39,50 +38,24 @@
   font-size: 2rem;
   align-items: center;
 }
-.site-header .header-content .header-title nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
-  display: flex;
-  gap: 15px;
-}
-.site-header .header-content .header-title nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-.site-header .header-content .header-title nav ul li a:hover {
-  color: #0077cc;
-}
 .site-header .header-content .header-menu nav.nav-menu {
-  display: grid;
-  grid-template-columns: auto1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+  margin: 0 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* spreads items across the row */
+  align-items: center; /* vertically align if needed */
 }
-.site-header .header-content .header-menu nav.nav-menu li a {
+.site-header .header-content .header-menu nav.nav-menu a {
   text-decoration: none;
   color: white;
-  font-weight: 500;
+  font-size: large;
+  font-weight: bold;
   position: relative;
   transition: color 0.3s ease;
 }
-.site-header .header-content .header-menu nav.nav-menu li a:hover {
-  color: #0077cc;
-}
-.site-header .header-content .header-menu nav.nav-menu li a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  left: 0;
-  bottom: -4px;
-  background: #0077cc;
-  transition: width 0.3s ease;
-}
-.site-header .header-content .header-menu nav.nav-menu li a:hover::after {
-  width: 100%;
+.site-header .header-content .header-menu nav.nav-menu a:hover {
+  color: #a73b62;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
@@ -109,45 +82,93 @@
     gap: 10px;
   }
 }
-.accordion {
-  border-bottom: 1px solid #ccc;
-  margin: 10px 0;
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows of equal height */
+  gap: 20px; /* space between grid items */
+  height: 60vh; /* full viewport height */
+  padding: 10px;
+  position: relative;
 }
-.accordion .accordion-title {
+.main .accordion.inactive {
+  display: none;
+}
+.main .accordion {
+  background-color: #d38e8e;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* fills its grid cell */
+  /*position: relative;*/
+  /* fill the grid cell */
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease; /* smooth expansion */
+}
+.main .accordion .accordion-title {
   cursor: pointer;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: #d38e8e;
   font-size: 1.4rem;
+  text-align: center;
 }
-.accordion .accordion-title:hover {
-  background-color: #e0e0e0;
+.main .accordion .accordion-title:hover {
+  box-shadow: 0 4px 20px #d38e8e;
 }
-.accordion .accordion-content {
+.main .accordion .accordion-content {
   display: none;
   max-height: none;
-  padding: 0 15px;
+  padding: 1.5em;
 }
-.accordion .accordion-content p {
-  margin: 10px 0;
+.main .accordion .accordion-content p {
+  margin: 10px;
 }
-.accordion .accordion-content p.hobbies {
+.main .accordion .accordion-content p.hobbies {
   padding: 2em;
   font-style: italic;
   font-size: 1.2em;
   background: #d1ecc6;
 }
-.accordion.active .accordion-content {
+.main .accordion.active .accordion-title {
+  background-color: #d1ecc6;
+  margin: 0 0 1em 0;
   display: block;
-  padding: 15px;
 }
-
+.main .accordion.active .accordion-content {
+  display: block;
+  z-index: 10; /* above other grid items */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0; /* optional full expansion */
+}
+.main .accordion .accordion.active .accordion-content {
+  display: block;
+}
+.main .accordion.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95vw; /* grid width + gap compensation */
+  height: calc(100% + 20px); /* grid height + gap compensation */
+  padding: 1.5em;
+  background-color: #d1ecc6;
+}
 @media (max-width: 768px) {
-  .accordion-title {
+  .main .accordion-title {
     font-size: 1.2rem;
     padding: 10px;
   }
 }
+
 /* Blog container */
+.accordion.blog.active {
+  overflow-y: auto; /* vertical scrollbar */
+  overflow-x: hidden; /* hide horizontal scrollbar */
+}
+
 .blog-posts {
   margin-top: 1rem;
   display: flex;
@@ -168,13 +189,6 @@
 .blog-post:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.blog-post img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
 }
 
 /* Post headings */
@@ -255,6 +269,8 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-rows: 34vh 66vh;
 }
 
 div #header {
@@ -263,7 +279,7 @@ div #header {
   top: 0;
   left: 0;
   right: 0;
-  height: 70px; /* example height */
+  height: 15vh; /* example height */
   z-index: 999;
   background: #fff;
 }
@@ -271,10 +287,6 @@ div #header headersite-header {
   padding: 2rem;
   background: #111;
   color: white;
-}
-
-.main > div {
-  scroll-margin-top: 200px;
 }
 
 /*# sourceMappingURL=main.css.map */

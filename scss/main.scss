@@ -1,6 +1,6 @@
 @use "img";
 @use "header";
-@use "body";
+@use "accordion";
 @use "blog";
 @use "footer";
 
@@ -8,6 +8,8 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-rows: 34vh 66vh;
   }
   
 div #header {
@@ -16,7 +18,7 @@ div #header {
   top: 0;
   left: 0;
   right: 0;
-  height: 70px; /* example height */
+  height: 15vh; /* example height */
   z-index: 999;
   background: #fff;
   
@@ -25,8 +27,4 @@ div #header {
     background: #111;
     color: white;
   }
-}
-
-.main > div {
-  scroll-margin-top: 200px; // adjust to your header height
 }

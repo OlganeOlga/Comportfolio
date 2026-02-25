@@ -1,4 +1,9 @@
 /* Blog container */
+.accordion.blog.active {
+  overflow-y: auto;     /* vertical scrollbar */
+  overflow-x: hidden;   /* hide horizontal scrollbar */
+}
+
 .blog-posts {
   margin-top: 1rem;
   display: flex;
@@ -21,12 +26,12 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.blog-post img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+// .blog-post p img {
+//   max-width: 300px;
+//   // width: 100%;
+//   height: auto;
+//   border-radius: 8px;
+// }
 
 /* Post headings */
 .blog-post h1,
