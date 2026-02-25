@@ -68,12 +68,8 @@ function initAccordions(container) {
 async function loadHeader() {
   const headerContainer = await loadHTML('header', 'sections/header.html');
 
-  console.log('Header loaded:', headerContainer);
-
   // NOW it exists
   const homeBtn = headerContainer.querySelector('.home');
-
-  console.log('Found home:', homeBtn);
 
   if (homeBtn) {
     homeBtn.addEventListener('click', returnHome);

@@ -1,14 +1,25 @@
 /* Blog container */
 .accordion.blog.active {
-  overflow-y: auto;     /* vertical scrollbar */
-  overflow-x: hidden;   /* hide horizontal scrollbar */
+  h2.accordion-title {
+    display: none;
+  }
 }
 
-.blog-posts {
+.accordion.blog.active .blog-posts {
+  overflow-y: auto;     /* vertical scrollbar */
+  overflow-x: hidden;   /* hide horizontal scrollbar */
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem; /* space between posts */
+
+  .post-body {
+    display: none;
+  }
+
+  .post-body.open {
+    display: block;
+  }
 }
 
 /* Each individual post */
@@ -26,15 +37,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-// .blog-post p img {
-//   max-width: 300px;
-//   // width: 100%;
-//   height: auto;
-//   border-radius: 8px;
-// }
-
 /* Post headings */
-.blog-post h1,
 .blog-post h2,
 .blog-post h3 {
   margin-top: 0.5rem;
@@ -42,18 +45,17 @@
   color: #1f2937; /* dark gray for headings */
 }
 
-.blog-post h1 {
-  font-size: 1.5rem;
-}
 .blog-post h2 {
   font-size: 1.25rem;
 }
 .blog-post h3 {
+  // display: none;
   font-size: 1.1rem;
 }
 
 /* Paragraphs inside post */
 .blog-post p {
+  // display: none;
   line-height: 1.6;
   color: #374151;
 }
