@@ -1,3 +1,4 @@
+import { BASE_PATH } from './utils.js';
 export async function loadBlogPosts() {
   const blogPosts = [
     { title: "My First Post", file: "blog/post1.md", date: "2026-02-13", tags: ["webdev", "personal"] },
@@ -25,7 +26,13 @@ export async function loadBlogPosts() {
       postDiv.className = 'blog-post';
 
       // Convert Markdown to HTML using marked.js
-      const html = marked.parse(content);
+      let html = marked.parse(content);
+
+      // Fix image paths for GitHub Pages
+      html = html.replaceAll(
+      'src="/',
+      `src="${BASE_PATH}`
+      );
 
       postDiv.innerHTML = html;
       blogContainer.appendChild(postDiv);

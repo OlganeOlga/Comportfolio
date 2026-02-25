@@ -1,4 +1,7 @@
 import { loadBlogPosts } from './blog.js';
+const BASE_PATH = window.location.hostname.includes('github.io')
+  ? '/Comportfolio/'   // your repo name here
+  : '/';
 let lastScrollPosition = 0;
 
 function clearHashOnReload() {
