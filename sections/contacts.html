@@ -1,13 +1,30 @@
 <section class="accordion" id="contacts">
     <h2 class="accordion-title">Contacts</h2>
     <div class="accordion-content">
-      <p>Email: o_yegorova@yahoo.com</p>
+      <p class="contact" id="contact"><a class="send-email" id="show-form" href="#">Send me an email</a></p>
       <!-- <p>LinkedIn: <a href="#">linkedin.com/in/--</a></p> -->
-      <p>GitHub: GitHub:
+      <p class="contact" id="contact">GitHub:
         <a href="https://github.com/OlganeOlga" target="_blank" rel="noopener noreferrer">
           github.com/OlganeOlga
         </a>
       </p>
+       <!-- Contact Form -->
+      <form id="contact-form" action="https://formspree.io/f/your-id" method="POST" enctype="text/plain">
+        <label class="name" for="name">Name:</label><br>
+        <input class="name" type="text" id="name" name="from_name" placeholder="Your Name"><br><br>
+
+        <label class="email" for="email">Email:</label><br>
+        <input class="email" type="email" id="reply_to" name="reply_to" placeholder="Your e-mail" required><br><br>
+
+        <label class="subject" for="subject">Subject:</label><br>
+        <input class="subject" type="subject" id="subject" name="title" placeholder="Your subject" required><br><br>
+
+        <label class="message" for="message">Message:</label><br>
+        <textarea class="message"id="message" name="message" rows="100" required></textarea><br><br>
+
+        <button class="submit" type="submit">Send Message</button>
+      </form>
+      <p id="form-status" style="color: green; display: none;">Your message has been sent!</p>
     </div>
 </section>
   

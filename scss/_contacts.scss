@@ -1,0 +1,64 @@
+#contacts #contacts .accordion-content{
+    form#contact-form{
+        display: none;
+        flex-direction: column;
+        transition: all 0.5s ease;  /* smooth animation */
+        transform: translateY(-20px); /* slide up effect */
+    }
+
+    form#contact-form.active {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto;
+        gap: 0 20px;
+        height: 300px;       /* enough to fit form */
+        opacity: 1;
+        transform: translateY(0);
+        overflow-y: auto;
+        overflow-x: hidden;
+        align-items: start;
+
+        .name, .email, .subject, .submit{
+            grid-column: 1/2;
+            width: 100%;
+        }
+        label.name {
+            grid-row: 1;
+        }
+        input.name {
+            grid-row: 2;
+        }
+        label.email {
+            grid-row: 3;
+        }
+        input.email {
+            grid-row: 4;
+        }
+        label.subject {
+            grid-row: 5;
+        }
+        input.subject {
+            grid-row: 6;
+        }
+        button.submit {
+            grid-row: 7;
+        }
+
+        label.message {
+            grid-column: 2/3;
+            grid-row: 1;
+        } 
+        textarea.message {
+            grid-column: 2/3;
+            grid-row: 2 / span 7;
+            width: 100%;
+            height: 300px;
+            resize: vertical;
+        }
+
+    }
+
+    .contact.invisible {
+        display: none;
+      }
+}

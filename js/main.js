@@ -1,4 +1,6 @@
 import { loadBlogPosts } from './blog.js';
+import { sendEmail } from './email.js';
+import { openEmaiForm } from './contacts.js';
 
 function returnHome() {
   document.querySelectorAll('.accordion').forEach(a => {
@@ -95,7 +97,10 @@ async function loadAllSections() {
     initAccordions(container);
 
     if (s.id === 'blog') await loadBlogPosts();
-
+    if (s.id === 'contacts') {
+      openEmaiForm();
+      sendEmail(); // <-- initialize email form here
+    }
     loadedContainers[s.id] = container;
   }
 
