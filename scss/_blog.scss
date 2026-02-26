@@ -106,3 +106,26 @@
   font-family: 'Fira Code', monospace;
   font-size: 0.9rem;
 }
+
+@media (max-width: 768px) {
+  section.accordion.active {
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .blog-post{
+    .post-title h1 {
+      margin-block: unset;
+      font-size: 1.5rem;
+    }
+  }  
+  .blog-post.open {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    p img {
+      max-width: 200px;
+    }
+  }
+}

@@ -53,39 +53,73 @@
       }
     }
 
-    &.active .accordion-title {
+    &.active {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 95vw;  /* grid width + gap compensation */
+      height: calc(100% + 20px);     /* grid height + gap compensation */
+      padding: 1.5em;
       background-color: #d1ecc6;
-      margin: 0 0 1em 0;
-      display: block;
-    }
 
-    &.active .accordion-content {
-      display: block;
-      z-index: 10;          /* above other grid items */
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      border-radius: 0;     /* optional full expansion */
+      .accordion-title {
+        background-color: #d1ecc6;
+        margin: 0 0 1em 0;
+        display: block;
+      }
+
+     .accordion-content {
+        display: block;
+        z-index: 10;          /* above other grid items */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        border-radius: 0;     /* optional full expansion */
+      }
     }
-    .accordion.active .accordion-content {
-      display: block;
+  }
+  .accordion.active#skills .accordion-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
+    grid-template-rows: repeat(2, 100px); /* 2 rows, 100px height each */
+    gap: 20px;
+    .askill{
+      justify-self: center;
+      padding: 0.5em;
+      box-shadow: 0 4px 20px #d38e8e;
+
+      h4, p {
+        margin: unset;
+        margin: 0.5em;
+      }
     }
   }
 
-  .accordion.active {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 95vw;  /* grid width + gap compensation */
-    height: calc(100% + 20px);     /* grid height + gap compensation */
-    padding: 1.5em;
-    background-color: #d1ecc6;
-  }
+  
   
   // Responsive
   @media (max-width: 768px) {
-    .accordion-title {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 20px 10px;
+    gap: 5px;
+
+    .accordion.accordion-title {
       font-size: 1.2rem;
       padding: 10px;
+    }
+    .accordion.active {
+      width: 85vw;
+      .accordion-title {
+        padding: 0;
+      }
+    }
+    .accordion.active#skills .accordion-content{
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      overflow-y: auto;
+      overflow-x: hidden;
+      gap: 5px;
+      height: 380px;
     }
   }
   }

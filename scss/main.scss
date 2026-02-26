@@ -11,20 +11,7 @@ body {
     display: grid;
     grid-template-rows: 34vh 66vh;
   }
-  
-div #header {
-  /* Make sure your header is fixed */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 15vh; /* example height */
-  z-index: 999;
-  background: #fff;
-  
-  headersite-header {
-    padding: 2rem;
-    background: #111;
-    color: white;
-  }
+
+@media (max-width: 768px) {
+  body { background-color: #d1ecc6;}
 }

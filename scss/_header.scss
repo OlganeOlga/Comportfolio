@@ -1,84 +1,103 @@
-.site-header {
-    display: grid;
-    grid-template-columns: 150px 1fr; // picture = 150px, rest = flexible
-    align-items: center;             // vertically center
-    gap: 20px;                       // space between image and text
-    padding: 20px;
-    background-color: #d38e8e;
-    color:  white;
-
-    .header-content{
-      display: grid;
-      grid-template-rows: auto auto;
-
-      .header-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 10px;
-        h1 {
-          margin: 0;
-          font-size: 2rem;
-          align-items: center;
-        }
-      }
-
-      .header-menu {
-        nav.nav-menu {
-          margin: 0 15vw;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between; /* spreads items across the row */
-          align-items: center;            /* vertically align if needed */
-          
-          a {
-            text-decoration: none;
-            color: white;
-            font-size: large;
-            font-weight: bold;
-            position: relative;
-            transition: color 0.3s ease;
-      
-            &:hover {
-              color: #a73b62;
-              text-decoration: none;
-            }
-          }
-        }
-      }
-    }  
-  }
+div.header#header {
+  display: grid;
+  grid-template-columns: 150px 1fr; // picture = 150px, rest = flexible
+  align-items: center;             // vertically center
+  gap: 20px;                       // space between image and text
+  padding: 20px;
+  background-color: #d38e8e;
+  color:  white;
   
-  // Responsive layout for mobile
-  @media (max-width: 768px) {
-    .site-header {
-      grid-template-columns: 1fr; // stack image and text vertically
-      text-align: center;
-      
-      .header-picture {
-        margin: 0 auto 15px auto;
-      }
-      
-      .header-content {
-        grid-template-columns: 1fr;
+      .header-content{
+        display: grid;
+        grid-template-rows: auto auto;
 
-        .header-title nav ul {
+        .header-title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           justify-content: center;
-          flex-wrap: wrap;
+          text-align: center;
+          gap: 10px;
+          h1 {
+            margin: 0;
+            font-size: 2rem;
+            align-items: center;
+          }
         }
 
         .header-menu {
-          margin-top: 15px;
-    
-          nav ul {
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+          nav.nav-menu {
+            margin: 0 15vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between; /* spreads items across the row */
+            align-items: center;            /* vertically align if needed */
+            
+            a {
+              text-decoration: none;
+              color: white;
+              font-size: large;
+              font-weight: bold;
+              position: relative;
+              transition: color 0.3s ease;
+        
+              &:hover {
+                color: #a73b62;
+                text-decoration: none;
+              }
+            }
           }
+        }
+      }  
+  }
+  
+// Responsive layout for mobile
+@media (max-width: 768px) {
+  div.header#header {
+    max-width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 0;
+    text-align: center;
+    padding: 0 10px 0 0;
+    
+    .header-picture {
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      img.profile-photo {
+        height: 70px;
+        width: 70px;
+      }
+    }
+    
+    .header-content {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      .header-title {
+        gap: unset;
+        justify-content: center;
+        h1 {font-size: 1.5rem;}
+        p {display: none;}
+      }
+
+      .header-menu {
+        margin-top: 5px;
+  
+        nav.nav-menu {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          margin: unset; /* remove side margins */
+          flex-direction: column; /* stack items vertically */
+          gap: 7px; /* space between links */
+          align-items: center; /* center links */
+        
         }
       }
     }
   }
+}
+
   

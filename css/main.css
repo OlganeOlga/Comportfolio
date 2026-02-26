@@ -12,7 +12,7 @@
   border-radius: 8px;
 }
 
-.site-header {
+div.header#header {
   display: grid;
   grid-template-columns: 150px 1fr;
   align-items: center;
@@ -21,11 +21,11 @@
   background-color: #d38e8e;
   color: white;
 }
-.site-header .header-content {
+div.header#header .header-content {
   display: grid;
   grid-template-rows: auto auto;
 }
-.site-header .header-content .header-title {
+div.header#header .header-content .header-title {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,19 +33,19 @@
   text-align: center;
   gap: 10px;
 }
-.site-header .header-content .header-title h1 {
+div.header#header .header-content .header-title h1 {
   margin: 0;
   font-size: 2rem;
   align-items: center;
 }
-.site-header .header-content .header-menu nav.nav-menu {
+div.header#header .header-content .header-menu nav.nav-menu {
   margin: 0 15vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between; /* spreads items across the row */
   align-items: center; /* vertically align if needed */
 }
-.site-header .header-content .header-menu nav.nav-menu a {
+div.header#header .header-content .header-menu nav.nav-menu a {
   text-decoration: none;
   color: white;
   font-size: large;
@@ -53,33 +53,54 @@
   position: relative;
   transition: color 0.3s ease;
 }
-.site-header .header-content .header-menu nav.nav-menu a:hover {
+div.header#header .header-content .header-menu nav.nav-menu a:hover {
   color: #a73b62;
   text-decoration: none;
 }
 
 @media (max-width: 768px) {
-  .site-header {
-    grid-template-columns: 1fr;
+  div.header#header {
+    max-width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 0;
     text-align: center;
+    padding: 0 10px 0 0;
   }
-  .site-header .header-picture {
-    margin: 0 auto 15px auto;
+  div.header#header .header-picture {
+    width: 100px;
+    display: flex;
+    justify-content: center;
   }
-  .site-header .header-content {
+  div.header#header .header-picture img.profile-photo {
+    height: 70px;
+    width: 70px;
+  }
+  div.header#header .header-content {
+    display: grid;
     grid-template-columns: 1fr;
   }
-  .site-header .header-content .header-title nav ul {
+  div.header#header .header-content .header-title {
+    gap: unset;
     justify-content: center;
-    flex-wrap: wrap;
   }
-  .site-header .header-content .header-menu {
-    margin-top: 15px;
+  div.header#header .header-content .header-title h1 {
+    font-size: 1.5rem;
   }
-  .site-header .header-content .header-menu nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  div.header#header .header-content .header-title p {
+    display: none;
+  }
+  div.header#header .header-content .header-menu {
+    margin-top: 5px;
+  }
+  div.header#header .header-content .header-menu nav.nav-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: unset; /* remove side margins */
+    flex-direction: column; /* stack items vertically */
+    gap: 7px; /* space between links */
+    align-items: center; /* center links */
   }
 }
 .main {
@@ -132,6 +153,16 @@
   font-size: 1.2em;
   background: #d1ecc6;
 }
+.main .accordion.active {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95vw; /* grid width + gap compensation */
+  height: calc(100% + 20px); /* grid height + gap compensation */
+  padding: 1.5em;
+  background-color: #d1ecc6;
+}
 .main .accordion.active .accordion-title {
   background-color: #d1ecc6;
   margin: 0 0 1em 0;
@@ -143,23 +174,45 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border-radius: 0; /* optional full expansion */
 }
-.main .accordion .accordion.active .accordion-content {
-  display: block;
+.main .accordion.active#skills .accordion-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
+  grid-template-rows: repeat(2, 100px); /* 2 rows, 100px height each */
+  gap: 20px;
 }
-.main .accordion.active {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 95vw; /* grid width + gap compensation */
-  height: calc(100% + 20px); /* grid height + gap compensation */
-  padding: 1.5em;
-  background-color: #d1ecc6;
+.main .accordion.active#skills .accordion-content .askill {
+  justify-self: center;
+  padding: 0.5em;
+  box-shadow: 0 4px 20px #d38e8e;
+}
+.main .accordion.active#skills .accordion-content .askill h4, .main .accordion.active#skills .accordion-content .askill p {
+  margin: unset;
+  margin: 0.5em;
 }
 @media (max-width: 768px) {
-  .main .accordion-title {
+  .main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 20px 10px;
+    gap: 5px;
+  }
+  .main .accordion.accordion-title {
     font-size: 1.2rem;
     padding: 10px;
+  }
+  .main .accordion.active {
+    width: 85vw;
+  }
+  .main .accordion.active .accordion-title {
+    padding: 0;
+  }
+  .main .accordion.active#skills .accordion-content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 5px;
+    height: 380px;
   }
 }
 
@@ -267,6 +320,25 @@
   font-size: 0.9rem;
 }
 
+@media (max-width: 768px) {
+  section.accordion.active {
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .blog-post .post-title h1 {
+    margin-block: unset;
+    font-size: 1.5rem;
+  }
+  .blog-post.open {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .blog-post.open p img {
+    max-width: 200px;
+  }
+}
 body {
   font-family: sans-serif;
   margin: 0;
@@ -275,20 +347,10 @@ body {
   grid-template-rows: 34vh 66vh;
 }
 
-div #header {
-  /* Make sure your header is fixed */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 15vh; /* example height */
-  z-index: 999;
-  background: #fff;
-}
-div #header headersite-header {
-  padding: 2rem;
-  background: #111;
-  color: white;
+@media (max-width: 768px) {
+  body {
+    background-color: #d1ecc6;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

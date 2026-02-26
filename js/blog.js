@@ -61,13 +61,16 @@ posts.forEach((content, index) => {
 // Add ONE click listener for the whole container
 blogContainer.addEventListener('click', (event) => {
   // Find the clicked post
-  const post = event.target.closest('.blog-post');
-  if (!post) return;
+  const blogPost = event.target.closest('.blog-post');
+  const parent = blogPost.closest('.blog');
+  if (!blogPost) return;
 
-  const postBody = post.querySelector('.post-body');
+  const postBody = blogPost.querySelector('.post-body');
   if (!postBody) return;
 
   // Toggle the 'open' class
+  parent.classList.toggle('open');
+  blogPost.classList.toggle('open');
   postBody.classList.toggle('open');
 });
   
