@@ -1,3 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  
   <style>
     .mono {
       stroke: #2D74DA;
@@ -27,3 +29,4 @@
     <line x1="16" y1="16" x2="26" y2="16"/>
 
   </g>
+</svg>
