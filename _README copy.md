@@ -65,11 +65,83 @@ I add to scripts:
 ```sass --watch scss/main.scss:css/main.css```
 
 ## Future Improvements
-- Add more projects and demos
 
-- Enhance interactivity with JavaScript
+### Overview
 
-- Implement backend functionality using Python
+This improvement plan is designed to gradually expand my skills from frontend development to full-stack application architecture. The goal is to strengthen practical experience, improve code structure, and build modern web applications with real-world functionality.
+
+---
+
+### Phase 1: Strengthen Frontend Skills
+
+**Objective:** Improve UI/UX quality and build a stronger portfolio.
+
+#### Actions:
+
+* Add more projects and interactive demos
+* Improve styling with modern CSS (Grid, Flexbox, animations)
+* Enhance JavaScript interactivity
+* Refactor existing projects for cleaner structure
+* Focus on responsive and accessible design
+
+**Goal:** Demonstrate solid frontend development skills through polished, functional projects.
+
+---
+
+### Phase 2: Implement Backend Functionality with Python
+
+**Objective:** Transition from frontend-only projects to full-stack applications.
+
+#### Actions:
+
+* Learn backend fundamentals (HTTP, REST APIs, routing)
+* Build a backend using Python (Flask or FastAPI)
+* Connect frontend forms to backend endpoints
+* Implement data validation and error handling
+
+**Goal:** Understand how client-server communication works and build functional APIs.
+
+---
+
+### Phase 3: Add Database Integration
+
+**Objective:** Store and manage persistent data.
+
+#### Actions:
+
+* Learn SQL fundamentals
+* Use a relational database (e.g., PostgreSQL)
+* Design database schemas
+* Implement CRUD operations (Create, Read, Update, Delete)
+* Connect database to Python backend
+
+**Goal:** Build fully functional data-driven applications.
+
+---
+
+### Phase 4: Build an Example Single Page Application (SPA)
+
+**Objective:** Learn modern frontend architecture.
+
+#### Actions:
+
+* Build a SPA using a framework (e.g., React)
+* Implement client-side routing
+* Manage application state
+* Connect SPA to Python backend API
+
+**Goal:** Gain experience with modern frontend frameworks and component-based development.
+
+---
+
+### Long-Term Vision
+
+By completing these phases, I will move from static websites to fully structured full-stack applications that include:
+
+* Interactive frontend
+* Backend API
+* Database integration
+* Modern SPA architecture
 
 
 ## Licens

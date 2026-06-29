@@ -47,9 +47,43 @@ div.header#header {
               }
             }
           }
+          nav.nav-menu a {
+            position: relative;
+          }
+          
+          nav.nav-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2px;
+            background: #a73b62;
+            transition: width 0.3s ease;
+          }
+          
+          nav.nav-menu a:hover::after {
+            width: 100%;
+          }
         }
       }  
   }
+
+  button.submit {
+    transition: transform 0.15s ease;
+  }
+  
+  button.submit:active {
+    transform: scale(0.96);
+  }
+
+  input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #a73b62;
+  box-shadow: 0 0 8px rgba(167, 59, 98, 0.4);
+  transition: all 0.2s ease;
+}
   
 // Responsive layout for mobile
 @media (max-width: 768px) {

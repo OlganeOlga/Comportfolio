@@ -57,6 +57,38 @@ div.header#header .header-content .header-menu nav.nav-menu a:hover {
   color: #a73b62;
   text-decoration: none;
 }
+div.header#header .header-content .header-menu nav.nav-menu a {
+  position: relative;
+}
+div.header#header .header-content .header-menu nav.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #a73b62;
+  transition: width 0.3s ease;
+}
+div.header#header .header-content .header-menu nav.nav-menu a:hover::after {
+  width: 100%;
+}
+
+button.submit {
+  transition: transform 0.15s ease;
+}
+
+button.submit:active {
+  transform: scale(0.96);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #a73b62;
+  box-shadow: 0 0 8px rgba(167, 59, 98, 0.4);
+  transition: all 0.2s ease;
+}
 
 @media (max-width: 768px) {
   div.header#header {
@@ -113,7 +145,19 @@ div.header#header .header-content .header-menu nav.nav-menu a:hover {
   position: relative;
 }
 .main .accordion.inactive {
-  display: none;
+  opacity: 0;
+}
+.main .accordion-content {
+  display: grid;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.main .accordion.active .accordion-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 .main .accordion {
   background-color: #d38e8e;
@@ -274,6 +318,17 @@ div.header#header .header-content .header-menu nav.nav-menu a:hover {
   display: none;
 }
 
+form#contact-form {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+form#contact-form.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* Blog container */
 .accordion.blog.active h2.accordion-title {
   display: none;
@@ -405,6 +460,20 @@ body {
   grid-template-rows: 34vh 66vh;
 }
 
+body {
+  animation: fadeInPage 0.6s ease;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 768px) {
   body {
     background-color: #d1ecc6;
