@@ -121,6 +121,7 @@ textarea:focus {
   
         nav.nav-menu {
           display: grid;
+          gap: 20px;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: 1fr 1fr;
           margin: unset; /* remove side margins */
