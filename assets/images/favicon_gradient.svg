@@ -2,7 +2,7 @@
 
   <!-- TOP HALF (blue) -->
   <g stroke="#2D74DA"
-     stroke-width="3.2"
+     stroke-width="4.2"
      stroke-linecap="round"
      stroke-linejoin="round"
      fill="none">
@@ -17,7 +17,7 @@
 
   <!-- BOTTOM HALF (green/yellow) -->
   <g stroke="#78C850"
-     stroke-width="3.2"
+     stroke-width="4.2"
      stroke-linecap="round"
      stroke-linejoin="round"
      fill="none">
