@@ -279,7 +279,7 @@ textarea:focus {
 }
 #contacts #contacts .accordion-content form#contact-form.active {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 2fr 1fr;
   grid-template-rows: auto;
   gap: 0 20px;
   height: 300px; /* enough to fit form */
@@ -340,6 +340,58 @@ form#contact-form.active {
   transform: translateY(0) scale(1);
 }
 
+@media (max-width: 768px) {
+  #contacts #contacts .accordion-content form#contact-form.active {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+    height: 100%; /* enough to fit form */
+    opacity: 1;
+    transform: translateY(0);
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: start;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active #contacts #contacts .accordion-content .name,
+  #contacts #contacts .accordion-content form#contact-form.active #contacts #contacts .accordion-content .email,
+  #contacts #contacts .accordion-content form#contact-form.active #contacts #contacts .accordion-content .subject,
+  #contacts #contacts .accordion-content form#contact-form.active #contacts #contacts .accordion-content .message,
+  #contacts #contacts .accordion-content form#contact-form.active #contacts #contacts .accordion-content .submit {
+    grid-column: 1;
+    width: 100%;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active input.name {
+    grid-row: 1;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active input.email {
+    grid-row: 2;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active label.name,
+  #contacts #contacts .accordion-content form#contact-form.active label.email,
+  #contacts #contacts .accordion-content form#contact-form.active label.subject {
+    display: none;
+    height: 0;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active label.message {
+    grid-column: 1;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active input.subject {
+    grid-row: 3;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active button.submit {
+    grid-row: 6;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active label.message {
+    grid-row: 4;
+  }
+  #contacts #contacts .accordion-content form#contact-form.active textarea.message {
+    grid-column: 1;
+    grid-row: 5;
+    width: 100%;
+    height: 300px;
+    resize: vertical;
+  }
+}
 /* Blog container */
 .accordion.blog.active h2.accordion-title {
   display: none;

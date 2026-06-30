@@ -8,7 +8,8 @@
 
     form#contact-form.active {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        // grid-template-columns: 1fr 2fr;
+        grid-template-rows: 2fr 1fr;
         grid-template-rows: auto;
         gap: 0 20px;
         height: 300px;       /* enough to fit form */
@@ -73,3 +74,63 @@ form#contact-form {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+  @media (max-width: 768px) {
+    #contacts #contacts .accordion-content form#contact-form.active {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+    height: 100%;       /* enough to fit form */
+    opacity: 1;
+    transform: translateY(0);
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: start;
+
+    #contacts #contacts .accordion-content .name,
+    #contacts #contacts .accordion-content .email,
+    #contacts #contacts .accordion-content .subject,
+    #contacts #contacts .accordion-content .message,
+    #contacts #contacts .accordion-content .submit {
+        grid-column: 1;
+        width: 100%;
+    }
+
+    input.name {
+        grid-row: 1;
+    }
+
+    input.email {
+        grid-row: 2;
+    }
+
+    label.name,
+    label.email,
+    label.subject {
+        display: none;
+        height: 0;
+        // grid-row: 5;
+    }
+    label.message {
+        grid-column: 1;
+    }
+
+    input.subject {
+        grid-row: 3;
+    }
+    button.submit {
+        grid-row: 6;
+    }
+
+    label.message {
+        grid-row: 4;
+    } 
+    textarea.message {
+        grid-column: 1;
+        grid-row: 5;
+        width: 100%;
+        height: 300px;
+        resize: vertical;
+    }
+    }
+}
+
