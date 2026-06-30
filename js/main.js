@@ -30,6 +30,7 @@ function changeState(accordion, container) {
       a.classList.add('inactive');
     }
   // Toggle this accordion
+  //accordion.classList.remove('inactive');
   accordion.classList.add('active');
   
   isActive = accordion.classList.contains('active'); // update after toggle
@@ -68,7 +69,7 @@ function initAccordions(container) {
 }
 
 async function loadHeader() {
-  const headerContainer = await loadHTML('header', 'sections/header.html');
+  const headerContainer = await loadHTML('header', 'sections/header2.html');
 
   // NOW it exists
   const homeBtn = headerContainer.querySelector('.home');

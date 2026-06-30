@@ -15,17 +15,23 @@
 div.header#header {
   display: grid;
   grid-template-columns: 150px 1fr;
+  grid-template-rows: 1fr 1fr;
   align-items: center;
   gap: 20px;
   padding: 20px;
   background-color: #d38e8e;
   color: white;
 }
-div.header#header .header-content {
-  display: grid;
-  grid-template-rows: auto auto;
+div.header#header .header-picture {
+  width: 100px;
+  margin: 0.7em 0 0 0;
+  grid-column: 1;
+  grid-row: 1/span 2;
+  justify-content: center;
 }
-div.header#header .header-content .header-title {
+div.header#header .header-title {
+  grid-row: 1;
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,34 +39,37 @@ div.header#header .header-content .header-title {
   text-align: center;
   gap: 10px;
 }
-div.header#header .header-content .header-title h1 {
+div.header#header .header-title h1 {
   margin: 0;
   font-size: 2rem;
   align-items: center;
 }
-div.header#header .header-content .header-menu nav.nav-menu {
+div.header#header .header-menu {
+  grid-row: 2;
+  grid-column: 2;
+}
+div.header#header .header-menu nav.nav-menu {
   margin: 0 15vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between; /* spreads items across the row */
-  align-items: center; /* vertically align if needed */
+  align-items: center;
+  text-decoration: unset; /* vertically align if needed */
 }
-div.header#header .header-content .header-menu nav.nav-menu a {
+div.header#header .header-menu nav.nav-menu a {
   text-decoration: none;
-  color: white;
+  margin: 0 1vw;
+  color: white !important;
   font-size: large;
   font-weight: bold;
   position: relative;
   transition: color 0.3s ease;
 }
-div.header#header .header-content .header-menu nav.nav-menu a:hover {
+div.header#header .header-menu nav.nav-menu a:hover {
   color: #a73b62;
   text-decoration: none;
 }
-div.header#header .header-content .header-menu nav.nav-menu a {
-  position: relative;
-}
-div.header#header .header-content .header-menu nav.nav-menu a::after {
+div.header#header .header-menu nav.nav-menu a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -70,7 +79,7 @@ div.header#header .header-content .header-menu nav.nav-menu a::after {
   background: #a73b62;
   transition: width 0.3s ease;
 }
-div.header#header .header-content .header-menu nav.nav-menu a:hover::after {
+div.header#header .header-menu nav.nav-menu a:hover::after {
   width: 100%;
 }
 
@@ -94,42 +103,44 @@ textarea:focus {
   div.header#header {
     max-width: fit-content;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30% 70%;
     gap: 0;
     text-align: center;
-    padding: 0 10px 0 0;
+    padding: 10px 0;
   }
   div.header#header .header-picture {
     width: 100px;
-    display: flex;
+    margin: 0.7em 0 0 0;
+    grid-column: 1;
+    grid-row: 1;
     justify-content: center;
   }
   div.header#header .header-picture img.profile-photo {
-    height: 70px;
-    width: 70px;
+    height: 5em;
+    width: 5em;
   }
-  div.header#header .header-content {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  div.header#header .header-content .header-title {
-    gap: unset;
+  div.header#header .header-title {
     justify-content: center;
+    grid-row: 1;
+    grid-column: 2/span 5;
   }
-  div.header#header .header-content .header-title h1 {
+  div.header#header .header-title h1 {
     font-size: 1.5rem;
   }
-  div.header#header .header-content .header-title p {
+  div.header#header .header-title p {
     display: none;
   }
-  div.header#header .header-content .header-menu {
+  div.header#header .header-menu {
     margin-top: 5px;
+    grid-row: 2;
+    grid-column: 1/span 5;
   }
-  div.header#header .header-content .header-menu nav.nav-menu {
+  div.header#header .header-menu nav.nav-menu {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    margin: unset; /* remove side margins */
     flex-direction: column; /* stack items vertically */
     gap: 7px; /* space between links */
     align-items: center; /* center links */
