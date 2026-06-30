@@ -101,7 +101,7 @@ textarea:focus {
 
 @media (max-width: 768px) {
   div.header#header {
-    max-width: fit-content;
+    max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 30% 70%;

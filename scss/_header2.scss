@@ -96,7 +96,8 @@ textarea:focus {
 // Responsive layout for mobile
 @media (max-width: 768px) {
   div.header#header {
-    max-width: fit-content;
+    max-width: 100%;
+    // max-width: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 30% 70%;

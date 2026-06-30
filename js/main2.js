@@ -30,8 +30,7 @@ function changeState(accordion, container) {
   // Close all accordions
   document.querySelectorAll('.accordion').forEach(a => {
     if (a !== accordion) {
-      a.classList.remove('active');
-      a.classList.add('inactive');
+      a.classList.replace('active', 'inactive');
     }
   });
 
@@ -82,7 +81,7 @@ function initHeaderNavigation() {
 
 async function loadHeader() {
 
-  const headerContainer = await loadHTML('header', 'sections/header.html');
+  const headerContainer = await loadHTML('header', 'sections/header2.html');
 
   const homeBtn = headerContainer.querySelector('.home');
 
