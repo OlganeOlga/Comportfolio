@@ -288,6 +288,8 @@ textarea:focus {
   overflow-y: auto;
   overflow-x: hidden;
   align-items: start;
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 #contacts #contacts .accordion-content form#contact-form.active .name, #contacts #contacts .accordion-content form#contact-form.active .email, #contacts #contacts .accordion-content form#contact-form.active .subject, #contacts #contacts .accordion-content form#contact-form.active .submit {
   grid-column: 1/2;
@@ -328,16 +330,32 @@ textarea:focus {
 #contacts #contacts .accordion-content .contact.invisible {
   display: none;
 }
+#contacts #contacts .accordion-content .back-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #a9b6a4; /* your accent color */
+  color: white;
+  border: none;
+  border-radius: 999px; /* makes it fully round */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem; /* smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: 0.2s ease;
+}
+#contacts #contacts .accordion-content .back-btn:hover {
+  background-color: #8fa08a;
+  transform: translateX(-2px);
+}
 
 form#contact-form {
   opacity: 0;
   transform: translateY(-20px) scale(0.98);
   transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-form#contact-form.active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
 @media (max-width: 768px) {

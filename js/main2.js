@@ -84,6 +84,7 @@ async function loadHeader() {
   const headerContainer = await loadHTML('header', 'sections/header2.html');
 
   const homeBtn = headerContainer.querySelector('.home');
+  const contactBtn = headerContainer.querySelector('.contacts')
 
   if (homeBtn) {
 
