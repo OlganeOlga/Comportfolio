@@ -6,12 +6,6 @@
   border: 3px solid #333;
 }
 
-.blog-post p img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-}
-
 div.header#header {
   display: grid;
   grid-template-columns: 150px 1fr;
@@ -165,6 +159,13 @@ textarea:focus {
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+.main .accordion.active {
+  display: flex;
+  max-height: 200%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  align-items: center;
+}
 .main .accordion.active .accordion-content {
   opacity: 1;
   transform: translateY(0);
@@ -191,9 +192,6 @@ textarea:focus {
   font-size: 1.4rem;
   text-align: center;
 }
-.main .accordion .accordion-title:hover {
-  box-shadow: 0 4px 20px #d38e8e;
-}
 .main .accordion .accordion-content {
   display: none;
   max-height: none;
@@ -213,9 +211,9 @@ textarea:focus {
   position: absolute;
   top: 0;
   left: 0;
-  width: 95vw; /* grid width + gap compensation */
+  width: 100vw; /* grid width + gap compensation */
   height: calc(100% + 20px); /* grid height + gap compensation */
-  padding: 1.5em;
+  padding: 1.5em 0 1.5em 0;
   background-color: #d1ecc6;
 }
 .main .accordion.active .accordion-title {
@@ -224,9 +222,11 @@ textarea:focus {
   display: block;
 }
 .main .accordion.active .accordion-content {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
   z-index: 10; /* above other grid items */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border-radius: 0; /* optional full expansion */
 }
 .main .accordion.active#skills .accordion-content {
@@ -256,7 +256,7 @@ textarea:focus {
     padding: 10px;
   }
   .main .accordion.active {
-    width: 85vw;
+    width: 100vw;
   }
   .main .accordion.active .accordion-title {
     padding: 0;
@@ -396,14 +396,20 @@ form#contact-form.active {
 .accordion.blog.active h2.accordion-title {
   display: none;
 }
-
+.accordion.blog.active .accordion-content {
+  justify-self: left;
+  justify-content: center;
+  width: 100vw;
+  padding: 0.5vw;
+}
 .accordion.blog.active .blog-posts {
   overflow-y: auto; /* vertical scrollbar */
   overflow-x: hidden; /* hide horizontal scrollbar */
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* space between posts */
+  justify-self: center;
+  gap: 0.1rem; /* space between posts */
+  width: 95%;
 }
 .accordion.blog.active .blog-posts .post-body {
   display: none;
@@ -411,73 +417,90 @@ form#contact-form.active {
 .accordion.blog.active .blog-posts .post-body.open {
   display: block;
 }
-
-/* Each individual post */
-.blog-post {
+.accordion.blog.active .blog-posts {
+  /* Each individual post */
+}
+.accordion.blog.active .blog-posts .blog-post {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-content: center;
+  overflow-y: auto;
+  font-size: 0.8em;
   background-color: #f9f9f9; /* light background */
-  border-left: 4px solid #4f46e5; /* accent color */
+  border: 2px solid #a9b6a4; /* accent color */
   padding: 1rem 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.blog-post:hover {
+.accordion.blog.active .blog-posts .blog-post.open {
+  max-height: 300px;
+}
+.accordion.blog.active .blog-posts .blog-post:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-/* Post headings */
-.blog-post h2,
-.blog-post h3 {
+.accordion.blog.active .blog-posts {
+  /* Post headings */
+}
+.accordion.blog.active .blog-posts .blog-post h2,
+.accordion.blog.active .blog-posts .blog-post h3 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: #1f2937; /* dark gray for headings */
 }
-
-.blog-post h2 {
+.accordion.blog.active .blog-posts .blog-post h2 {
   font-size: 1.25rem;
 }
-
-.blog-post h3 {
+.accordion.blog.active .blog-posts .blog-post h3 {
   font-size: 1.1rem;
 }
-
-/* Paragraphs inside post */
-.blog-post p {
+.accordion.blog.active .blog-posts {
+  /* Paragraphs inside post */
+}
+.accordion.blog.active .blog-posts .blog-post p {
   line-height: 1.6;
   color: #374151;
 }
-
-/* Lists */
-.blog-post ul,
-.blog-post ol {
+.accordion.blog.active .blog-posts .blog-post p img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+.accordion.blog.active .blog-posts {
+  /* Lists */
+}
+.accordion.blog.active .blog-posts .blog-post ul,
+.accordion.blog.active .blog-posts .blog-post ol {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 }
-
-/* Links inside post */
-.blog-post a {
-  color: #4f46e5;
+.accordion.blog.active .blog-posts {
+  /* Links inside post */
+}
+.accordion.blog.active .blog-posts .blog-post a {
+  color: #a9b6a4;
   text-decoration: none;
   font-weight: 500;
 }
-
-.blog-post a:hover {
+.accordion.blog.active .blog-posts .blog-post a:hover {
   text-decoration: underline;
 }
-
-/* Blockquotes */
-.blog-post blockquote {
-  border-left: 3px solid #4f46e5;
+.accordion.blog.active .blog-posts {
+  /* Blockquotes */
+}
+.accordion.blog.active .blog-posts .blog-post blockquote {
+  border-left: 3px solid #a9b6a4;
   padding-left: 1rem;
   color: #6b7280;
   font-style: italic;
   margin: 1rem 0;
 }
-
-/* Code blocks */
-.blog-post pre {
+.accordion.blog.active .blog-posts {
+  /* Code blocks */
+}
+.accordion.blog.active .blog-posts .blog-post pre {
   background-color: #1e1e2f;
   color: #f5f5f5;
   padding: 0.75rem 1rem;
@@ -487,8 +510,7 @@ form#contact-form.active {
   font-size: 0.9rem;
   margin: 1rem 0;
 }
-
-.blog-post code {
+.accordion.blog.active .blog-posts .blog-post code {
   background-color: #e5e7eb;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
@@ -497,10 +519,21 @@ form#contact-form.active {
 }
 
 @media (max-width: 768px) {
+  main.main {
+    padding: unset;
+  }
   section.accordion.active {
-    height: 85%;
+    width: 100%;
+    padding: unset;
+    margin: unset;
+    align-items: center;
+    height: 85vw;
     overflow-y: auto;
     overflow-x: hidden;
+  }
+  .blog-post {
+    height: 20vw;
+    align-items: center;
   }
   .blog-post .post-title h1 {
     margin-block: unset;
@@ -510,6 +543,8 @@ form#contact-form.active {
     height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
+    border-left: unset;
+    padding: 0.2em;
   }
   .blog-post.open p img {
     max-width: 200px;
@@ -521,6 +556,7 @@ body {
   padding: 0;
   display: grid;
   grid-template-rows: 34vh 66vh;
+  overflow: hidden;
 }
 
 body {

@@ -25,60 +25,81 @@ export async function loadBlogPosts() {
       
     );
 
-// Loop over posts and append
-posts.forEach((content, index) => {
-  const postDiv = document.createElement('div');
-  postDiv.className = 'blog-post';
-
-  // Convert Markdown to HTML using marked.js
-  let html = marked.parse(content);
-
-  // Fix image paths for GitHub Pages
-  html = html.replaceAll('src="/', `src="${BASE_PATH}`);
-
-  // Create title and body containers
-  const titleDiv = document.createElement('div');
-  titleDiv.className = "post-title";
-
-  const bodyDiv = document.createElement('div');
-  bodyDiv.className = "post-body";
-  bodyDiv.innerHTML = html;
-
-  // Extract first heading as title
-  const firstHeading = bodyDiv.querySelector('h1, h2, h3');
-  if (firstHeading) {
-    titleDiv.innerHTML = firstHeading.outerHTML;
-    firstHeading.remove(); // remove from body to avoid duplication
+  async function blogSwithcer(params) {
+        const posts = document.querySelectorAll('.blog-post');
+    
+    posts.forEach(post => {
+      post.addEventListener('click', () => {
+        // Close all other posts
+        posts.forEach(p => p.classList.remove('open'));
+    
+        // Open the clicked post
+        post.classList.add('open');
+      });
+    });  
   }
 
-  // Append children to post
-  postDiv.appendChild(titleDiv);
-  postDiv.appendChild(bodyDiv);
+  // Loop over posts and append
+  posts.forEach((content, index) => {
+    const postDiv = document.createElement('div');
+    postDiv.className = 'blog-post';
 
-  // Append post to blog container
-  blogContainer.appendChild(postDiv);
-});
+    // Convert Markdown to HTML using marked.js
+    let html = marked.parse(content);
 
-// Add ONE click listener for the whole container
-blogContainer.addEventListener('click', (event) => {
-  // Find the clicked post
-  const blogPost = event.target.closest('.blog-post');
-  const parent = blogPost.closest('.blog');
-  if (!blogPost) return;
+    // Fix image paths for GitHub Pages
+    html = html.replaceAll('src="/', `src="${BASE_PATH}`);
 
-  const postBody = blogPost.querySelector('.post-body');
-  if (!postBody) return;
+    // Create title and body containers
+    const titleDiv = document.createElement('div');
+    titleDiv.className = "post-title";
 
-  // Toggle the 'open' class
-  parent.classList.toggle('open');
-  blogPost.classList.toggle('open');
-  postBody.classList.toggle('open');
-});
-  
-  } catch (err) {
-    console.error('Failed loading blog posts:', err);
+    const bodyDiv = document.createElement('div');
+    bodyDiv.className = "post-body";
+    bodyDiv.innerHTML = html;
+
+    // Extract first heading as title
+    const firstHeading = bodyDiv.querySelector('h1, h2, h3');
+    if (firstHeading) {
+      titleDiv.innerHTML = firstHeading.outerHTML;
+      firstHeading.remove(); // remove from body to avoid duplication
+    }
+
+    // Append children to post
+    postDiv.appendChild(titleDiv);
+    postDiv.appendChild(bodyDiv);
+
+    // Append post to blog container
+    blogContainer.appendChild(postDiv);
+  });
+
+  // Add ONE click listener for the whole container
+  blogContainer.addEventListener('click', (event) => {
+    // Find the clicked post
+    const blogPost = event.target.closest('.blog-post');
+    const parent = blogPost.closest('.blog');
+    if (!blogPost) return;
+
+    const postBody = blogPost.querySelector('.post-body');
+    if (!postBody) return;
+
+    // Close all posts
+    blogContainer.querySelectorAll('.blog-post.open').forEach(post => {
+      post.classList.remove('open');
+      post.querySelector('.post-body')?.classList.remove('open');
+    });
+
+
+    // Toggle the 'open' class
+    parent.classList.add('open');
+    blogPost.classList.add('open');
+    postBody.classList.add('open');
+  });
+    
+    } catch (err) {
+      console.error('Failed loading blog posts:', err);
+    }
   }
-}
 
 // Only call this when the DOM is ready
 document.addEventListener('DOMContentLoaded', loadBlogPosts);
