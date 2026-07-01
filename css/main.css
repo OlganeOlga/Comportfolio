@@ -327,6 +327,10 @@ textarea:focus {
   height: 300px;
   resize: vertical;
 }
+#contacts #contacts .accordion-content .contact a {
+  display: flex;
+  justify-content: center;
+}
 #contacts #contacts .accordion-content .contact.invisible {
   display: none;
 }
